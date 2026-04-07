@@ -4,54 +4,42 @@
 
 
 using namespace std;
-
-void inputStudent(int& id, string& name, int& age, char courses[3][50], float scores[3]) {
-    cout << "Enter student ID: \n";
+void Student::inputStudent() {
+    cout << "Enter student ID: ";
     cin >> id;
-    cin.ignore(); // Clear the input buffer
-    cout << "Enter student name: \n";
+    cin.ignore(); // To ignore the newline character left in the buffer
+
+    cout << "Enter student name: ";
     getline(cin, name);
-    cout << "Enter student age: \n";
+
+    cout << "Enter student age: ";
     cin >> age;
-    cin.ignore(); // Clear the input buffer
-    for (int i = 0; i < 3; i++) {
-        if (i == 1){
-            cout << "Enter the first course name: \n";
-        } else if (i == 2){
-            cout << "Enter the second course name: \n";
-        } else {
-            cout << "Enter the third course name: \n";
-        }
-        cin.getline(courses[i], 50);
-    }
-    cin.ignore(); // Clear the input buffer
-    for (int i = 0; i < 3; i++) {
-        if (i == 1){
-            cout << "Enter the first course score: \n";
-        } else if (i == 2){
-            cout << "Enter the second course score: \n";
-        } else {
-            cout << "Enter the third course score: \n";
-        }
+    cin.ignore(); // To ignore the newline character left in the buffer
+
+    for (int i = 0; i < 5; i++) {
+        cout << "Enter course " << i + 1 << ": ";
+        getline(cin, courses[i]);
+
+        cout << "Enter score for course " << i + 1 << ": ";
         cin >> scores[i];
         cin.ignore(); // To ignore the newline character left in the buffer
 
     }
-    cin.ignore(); // Clear the input buffer
-
+    average_score = computeAverage();
+    assignGrade();
 
 }
 
-void displayStudent(int& id, string& name, int& age, char courses[3][50], float scores[3], float average_score, char grade) {
+void Student::displayStudent() {
     cout << "Student ID: " << id << endl;
     cout << "Student Name: " << name << endl;
     cout << "Student Age: " << age << endl;
-    for (int i = 0; i < 3; i++) {
-        if(i == 1){
+    for (int i = 0; i < 4; i++) {
+        if(i == 0){
             cout << "Student's first course: " << courses[i] << " with score: " << scores[i] << endl;
-        } else if(i == 2){
+        } else if(i == 1){
             cout << "Student's second course: " << courses[i] << " with score: " << scores[i] << endl;
-        } else {
+        } else if (i == 2){
             cout << "Student's third course: " << courses[i] << " with score: " << scores[i] << endl;
         } else if (i == 3){
             cout << "Student's fourth course: " << courses[i] << " with score: " << scores[i] << endl;
@@ -63,16 +51,17 @@ void displayStudent(int& id, string& name, int& age, char courses[3][50], float 
     cout << "Grade: " << grade << endl;
 }
 
-float computeAverage(float scores[3]) {
+float Student::computeAverage() {
     float sum = 0;
-    for (int i = 0; i < 3; i++) {
+
+    for (int i = 0; i < 4; i++) {
         sum += scores[i];
     }
-    float average_score = sum / 3;
+    float average_score = sum / 4;
     return average_score;
 }
 
-void assignGrade(int id, string& name, float average_score, char &grade) {
+void Student::assignGrade() {
     if (average_score >= 90) {
         grade = 'A';
     } else if (average_score >= 80) {
