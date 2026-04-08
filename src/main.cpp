@@ -5,6 +5,56 @@
 
 using namespace std;
 
+// FUNCTION DECLARATIONS
+void AddStudent(vector<Student>& studentList);
+void viewStudents(const vector<Student>& studentList);
+void searchStudent(const vector<Student>& studentList);
+void updateStudent(vector<Student>& studentList);
+void deleteStudent(vector<Student>& studentList);
+
+int main(){
+    vector<Student> studentList;
+    int choice;
+
+    do {
+        cout << "-----Student Record Management System-----" << endl;
+        cout << "1. Add Student" << endl;
+        cout << "2. View Students" << endl;
+        cout << "3. Search Student" << endl;
+        cout << "4. Update Student" << endl;
+        cout << "5. Delete Student" << endl;
+        cout << "6. Exit" << endl;
+        cout << "Enter your choice: ";
+        cin >> choice;
+
+        switch (choice) {
+            case 1:
+                AddStudent(studentList);
+                break;
+            case 2:
+                viewStudents(studentList);
+                break;
+            case 3:
+                searchStudent(studentList);
+                break;
+            case 4:
+                updateStudent(studentList);
+                break;
+            case 5:
+                deleteStudent(studentList);
+                break;
+            case 6:
+                cout << "Exiting the program. Goodbye!" << endl;
+                break;
+            default:
+                cout << "Invalid choice. Please try again." << endl;
+        }
+    } while (choice != 6);
+    return 0;
+}
+
+
+
 // FUNCTION ADD STUDENTS
 void AddStudent(vector<Student>& studentList){
     Student NewStd;
@@ -12,9 +62,11 @@ void AddStudent(vector<Student>& studentList){
 
     int id = NewStd.getId();
 
-    if(isDuplicate(studentList, id)){
-        cout << "Error: Student with ID " << id << " already exists. Please enter a unique ID." << endl;
-        return;
+    for(const auto& student : studentList){
+        if(student.getId() == id){
+            cout << "Error: Student with ID " << id << " already exists. Please enter a unique ID." << endl;
+            return;
+        }
     }
     studentList.push_back(NewStd);
     cout << "Student added successfully!" << endl;
@@ -30,7 +82,7 @@ bool Student::isDuplicate(vector<Student>& studentList, int id){
 }
 
 // FUNCTION VIEW STUDENTS
-void Student::viewStudents(const vector<Student>& studentList){
+void viewStudents(const vector<Student>& studentList){
     if(studentList.empty()){
         cout << "No students to display." << endl;
         return;
@@ -41,7 +93,7 @@ void Student::viewStudents(const vector<Student>& studentList){
 }
 
 //FUNCTION SEARCH STUDENTS
-void Student::searchStudent(const vector<Student>& studentList){
+void searchStudent(const vector<Student>& studentList){
     cout << "-----Searching for students-----" << endl;
     cout << "1. Search by ID: " <<endl;
     cout << "2. Search by Name; " << endl;
@@ -116,7 +168,7 @@ void updateStudent(vector<Student>& studentList){
 }
 
 //FUNCTION DELETE STUDENTS
-void Student::deleteStudent(vector<Student>& studentList){
+void deleteStudent(vector<Student>& studentList){
     cout << "-----Deleting a student-----" << endl;
     cout << "Enter the ID of the student to delete:";
     cin >> id;
@@ -127,10 +179,6 @@ void Student::deleteStudent(vector<Student>& studentList){
             return;
         }
     }
+    cout << "Student with ID " << id << " not found." << endl;
 }
 
-int main(){
-    vector<Student> studentList;
-
-    return 0;
-}
