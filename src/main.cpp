@@ -26,7 +26,8 @@ int main(){
         cout << "3. Search Student" << endl;
         cout << "4. Update Student" << endl;
         cout << "5. Delete Student" << endl;
-        cout << "6. Exit" << endl;
+        cout << "6. Sort Students" << endl;
+        cout << "7. Exit(save)" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -47,6 +48,9 @@ int main(){
                 deleteStudent(studentList);
                 break;
             case 6:
+                saveToFile(studentList);
+                break;
+            case 7:
                 saveToFile(studentList);
                 cout << "Exiting the program. Goodbye!" << endl;
                 break;
@@ -258,4 +262,30 @@ void loadFromFile(vector<Student>& studentList){
     }
     file.close();
     cout << "Student data loaded from file successfully!" << endl;
+}
+
+void sortStudents(vector<Student>& studentList){
+    cout << "-----Sorting students-----" << endl;
+    cout << "1. Sort by Name" << endl;
+    cout << "2. Sort by Average Score" << endl;
+
+    int choice;
+    cout << "Enter your choice: ";
+    cin >> choice;
+
+    if (choice ==1){
+        sort(studentList.begin(), studentList.end(),
+    [](const Student& a, const Student& b){
+        return a.getName() < b.getName();
+    });
+    } else if (choice == 2) {
+        sort (studentList.begin(), studentList.end(),
+    [](const Student& a, const Student& b) {
+        return a.getAverage() > b.getAverage();
+    });
+    } else {
+        cout << "Invalid choice. Returning to main menu." << endl;
+        return;
+    }
+    
 }

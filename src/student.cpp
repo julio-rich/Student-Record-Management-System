@@ -172,3 +172,7 @@ void Student::setId(int newId) {
 void Student::setAge(int newAge) {
     age = newAge;
 }
+
+float Student::getAverage() {
+    return average_score;
+}

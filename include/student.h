@@ -37,5 +37,7 @@ class Student {
 
     void setId(int newId);
     void setAge(int newAge);
+
+    float getAverage();
 };
 #endif // STUDENT_H
