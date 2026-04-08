@@ -21,5 +21,17 @@ class Student {
 
     int getId();
     string getName();
+
+    void setName(string newName);
+    void setAge(int newAge);
+    void setCourses(vector<string> newCourses);
+    void setScores(vector<float> newScores);
+
+    void updateName();
+    void updateAge();
+    void updateCoursesAndScores();
+    void updateAllInformation();
+
+
 };
 #endif // STUDENT_H

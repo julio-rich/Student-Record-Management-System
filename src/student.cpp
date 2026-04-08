@@ -2,8 +2,10 @@
 #include <iostream>
 #include <string>
 
-
 using namespace std;
+
+// FUNCTION INPUT STUDENT
+
 void Student::inputStudent() {
     cout << "Enter student ID: ";
     cin >> id;
@@ -16,13 +18,22 @@ void Student::inputStudent() {
     cin >> age;
     cin.ignore(); // To ignore the newline character left in the buffer
 
-    for (int i = 0; i < 5; i++) {
+    courses.clear();
+    scores.clear();
+
+    for (int i = 0; i < 3; i++) {
+        string course;
+        float score;
+        
         cout << "Enter course " << i + 1 << ": ";
-        getline(cin, courses[i]);
+        getline(cin, course);
 
         cout << "Enter score for course " << i + 1 << ": ";
-        cin >> scores[i];
+        cin >> score;
         cin.ignore(); // To ignore the newline character left in the buffer
+
+        courses.push_back(course);
+        scores.push_back(score);
 
     }
     average_score = computeAverage();
@@ -30,35 +41,39 @@ void Student::inputStudent() {
 
 }
 
+// FUNCTION DISPLAY STUDENT
+
 void Student::displayStudent() {
     cout << "Student ID: " << id << endl;
     cout << "Student Name: " << name << endl;
     cout << "Student Age: " << age << endl;
-    for (int i = 0; i < 4; i++) {
-        if(i == 0){
-            cout << "Student's first course: " << courses[i] << " with score: " << scores[i] << endl;
-        } else if(i == 1){
-            cout << "Student's second course: " << courses[i] << " with score: " << scores[i] << endl;
-        } else if (i == 2){
-            cout << "Student's third course: " << courses[i] << " with score: " << scores[i] << endl;
-        } else if (i == 3){
-            cout << "Student's fourth course: " << courses[i] << " with score: " << scores[i] << endl;
-        } else if (i == 4){
-            cout << "Student's fifth course: " << courses[i] << " with score: " << scores[i] << endl;
-        }
+    for (int i = 0; i < courses.size(); i++) {
+        cout << "Course: " << courses[i] << ", Score: " << scores[i] << endl;
     }
     cout << "Average Score: " << average_score << endl;
     cout << "Grade: " << grade << endl;
 }
 
+// FUNCTION COMPUTE AVERAGE
+
 float Student::computeAverage() {
     float sum = 0;
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < scores.size; i++) {
         sum += scores[i];
     }
-    float average_score = sum / 4;
+     average_score = sum / scores.size();
     return average_score;
+}
+
+// FUNCTION ASSIGN GRADE
+
+int Student::getId(int id) {
+    return id;
+}
+
+string Student::getName(string& name) {
+    return name;
 }
 
 void Student::assignGrade() {
@@ -75,10 +90,73 @@ void Student::assignGrade() {
     }
 }
 
-int getId(int id) {
-    return id;
+// FUNCTION UPDATE NAME
+void Student::updateName() {
+    cout << "Enter new name: "
+    getline(cin, name);
+    cout << "Name updated successfully!" << endl;
 }
 
-string getName(string& name) {
-    return name;
+// FUNCTION UPDATE AGE
+void Student::updateAge() {
+    cout << "Enter new age: ";
+    cin.ignore(); // To ignore the newline character left in the buffer
+    cin >> age;
+    cout << "Age updated successfully!" << endl;
+}
+
+// FUNCTION UPDATE COURSES AND SCORES
+void Student::updateCoursesAndScores() {
+    courses.clear();
+    scores.clear();
+
+    for (int i = 0; i < 3; i++) {
+        string course;
+        float score;
+
+        cout << "Enter new course " << i + 1 << ": ";
+        getline(cin, course);
+
+        cout << "Enter new score for course " << i + 1 << ": ";
+        cin >> score;
+        cin.ignore(); // To ignore the newline character left in the buffer
+
+        courses.push_back(course);
+        scores.push_back(score);
+
+    }
+
+    average_score = computeAverage();
+    assignGrade();
+    cout << "Courses and scores updated successfully!" << endl;
+}
+
+// FUNCTION UPDATE ALL INFORMATION
+void Student::updateAllInformation() {
+    cout << "Enter new name: ";
+    cin.ignore(); // To ignore the newline character left in the buffer
+    getline(cin, name);
+
+    cout << "Enter new age: ";
+    cin >> age;
+    cin.ignore(); // To ignore the newline character left in the buffer
+
+    courses.clear();
+    scores.clear();
+
+    for (int i = 0; i < 3; i++) {
+        string course;
+        float score;
+
+        cout << "Enter new course " << i + 1 << ": ";
+        getline(cin, course);
+
+        cout << "Enter new score for course " << i + 1 << ": ";
+        cin >> score;
+        cin.ignore(); // To ignore the newline character left in the buffer
+
+        courses.push_back(course);
+        scores.push_back(score);
+
+    }
 }
