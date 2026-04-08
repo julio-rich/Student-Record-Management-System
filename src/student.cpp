@@ -68,11 +68,11 @@ float Student::computeAverage() {
 
 // FUNCTION ASSIGN GRADE
 
-int Student::getId(int id) {
+int Student::getId() {
     return id;
 }
 
-string Student::getName(string& name) {
+string Student::getName() {
     return name;
 }
 
@@ -95,14 +95,6 @@ void Student::updateName() {
     cout << "Enter new name: "
     getline(cin, name);
     cout << "Name updated successfully!" << endl;
-}
-
-// FUNCTION UPDATE AGE
-void Student::updateAge() {
-    cout << "Enter new age: ";
-    cin.ignore(); // To ignore the newline character left in the buffer
-    cin >> age;
-    cout << "Age updated successfully!" << endl;
 }
 
 // FUNCTION UPDATE COURSES AND SCORES
@@ -159,4 +151,24 @@ void Student::updateAllInformation() {
         scores.push_back(score);
 
     }
+}
+
+int Student::getAge() {
+    return age;
+}
+
+vector<string> Student::getCourses() {
+    return courses;
+}
+
+vector<float> Student::getScores() {
+    return scores;
+}
+
+void Student::setId(int newId) {
+    id = newId;
+}
+
+void Student::setAge(int newAge) {
+    age = newAge;
 }

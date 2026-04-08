@@ -28,10 +28,14 @@ class Student {
     void setScores(vector<float> newScores);
 
     void updateName();
-    void updateAge();
     void updateCoursesAndScores();
     void updateAllInformation();
 
+    int getAge();
+    vector<string> getCourses();
+    vector<float> getScores();
 
+    void setId(int newId);
+    void setAge(int newAge);
 };
 #endif // STUDENT_H
