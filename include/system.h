@@ -8,6 +8,7 @@ using namespace std;
 class System {
     private:
     vector<Student> studentList;
+    bool isDuplicate(int id) const;
 
     public:
     void addStudent();

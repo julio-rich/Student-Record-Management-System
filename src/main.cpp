@@ -62,14 +62,6 @@ int main(){
 
 
 
-bool Student::isDuplicate(vector<Student>& studentList, int id){
-    for (const auto& student : studentList) {
-        if (student.getId() == id) {
-            return true;
-        }
-    }
-    return false;
-}
 
 
 

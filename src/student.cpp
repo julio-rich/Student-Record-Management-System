@@ -76,6 +76,8 @@ string Student::getName() {
     return name;
 }
 
+// FUNCTION ASSIGN GRADE
+
 void Student::assignGrade() {
     if (average_score >= 90) {
         grade = 'A';

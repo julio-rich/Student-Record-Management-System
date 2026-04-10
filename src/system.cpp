@@ -11,14 +11,24 @@ void System::addStudent(){
 
     int id = NewStd.getId();
 
-    for(const auto& student : studentList){
-        if(student.getId() == id){
-            cout << "Error: Student with ID " << id << " already exists. Please enter a unique ID." << endl;
-            return;
-        }
+    if (isDuplicate(id)){
+        cout << "A student with this ID already exists. Please try again." << endl;
+        return;
     }
+
     studentList.push_back(NewStd);
     cout << "Student added successfully!" << endl;
+}
+
+// FUNCTION CHECK DUPLICATE ID
+
+bool System::isDuplicate(int id) const{
+    for (const auto& student : studentList) {
+        if (student.getId() == id) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // FUNCTION VIEW STUDENTS
