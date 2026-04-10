@@ -11,7 +11,7 @@ using namespace std;
 
 int main(){
     System system;
-    FileHandler.loadFromFile(system.getStudentList());
+    FileHandler::loadFromFile(system.getStudentList());
     int choice;
 
     do {

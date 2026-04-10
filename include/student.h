@@ -37,6 +37,7 @@ class Student {
 
     // update functions
     void updateName();
+    void updateAge();
     void updateCoursesAndScores();
     void updateAllInformation();
 

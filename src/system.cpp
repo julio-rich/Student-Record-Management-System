@@ -50,7 +50,7 @@ void System::searchStudent()const {
 
     int choice;
     cout << "Enter your choice : " << endl; 
-    cin >> choice
+    cin >> choice;
     if(choice == 1){
         int id;
         cin >> id;
@@ -97,14 +97,14 @@ void System::updateStudent(){
             cin.ignore(); 
 
             if (choice == 1){
-                student.upadateName();
+                student.updateName();
                 cout << "Name updated successfully!" << endl;
             } else if (choice == 2){
-                student.updateCoursesAndScores();
-
-            } else if (choice == 3){
                 student.updateAge();
                 cout << "Age updated successfully!" << endl;
+            } else if (choice == 3){
+                student.updateCoursesAndScores();
+                cout << "Courses and scores updated successfully!" << endl;
             } else if (choice == 4){
                 student.updateAllInformation();
                 cout << "All information updated successfully!" << endl;
@@ -121,10 +121,11 @@ void System::updateStudent(){
 void System::deleteStudent(){
     cout << "-----Deleting a student-----" << endl;
     cout << "Enter the ID of the student to delete:";
+    int id;
     cin >> id;
-    for (int i = 0; i < studentList.size(); i++){
-        if (studentList[i].getId()==id){
-            studentList.erase(studentList.begin() + i);
+    for (auto it = studentList.begin(); it != studentList.end(); ++it) {
+        if (it->getId() == id) {
+            studentList.erase(it);
             cout << "Student deleted successfully!" << endl;
             return;
         }
@@ -164,8 +165,8 @@ void System::showStatistics()const {
         cout << "No students to calculate statistics." << endl;
         return;
     }
-    const student& highest = &studentList[0];
-    const student& lowest = &studentList[0];
+    const Student& highest = &studentList[0];
+    const Student& lowest = &studentList[0];
     float totalAverage = 0;
 
     for(const auto& student : studentList){

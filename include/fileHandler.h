@@ -6,6 +6,7 @@
 using namespace std;
 
 class FileHandler {
+    public:
     static void saveToFile(const vector<Student>& studentList);
     static void loadFromFile(vector<Student>& studentList);
 };
