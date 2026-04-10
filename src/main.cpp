@@ -7,7 +7,7 @@
 #include <fstream>
 #include <algorithm>
 
-using namespace std;`
+using namespace std;
 
 int main(){
     System system;

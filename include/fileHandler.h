@@ -1,5 +1,5 @@
-#ifndef "FILE_HANDLER_H"
-#define "FILE_HANDLER_H"
+#ifndef FILE_HANDLER_H
+#define FILE_HANDLER_H
 
 #include <vector>
 #include "student.h"
