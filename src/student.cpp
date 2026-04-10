@@ -43,7 +43,7 @@ void Student::inputStudent() {
 
 // FUNCTION DISPLAY STUDENT
 
-void Student::displayStudent() {
+void Student::displayStudent()const{
     cout << "Student ID: " << id << endl;
     cout << "Student Name: " << name << endl;
     cout << "Student Age: " << age << endl;
@@ -57,22 +57,25 @@ void Student::displayStudent() {
 // FUNCTION COMPUTE AVERAGE
 
 float Student::computeAverage() {
+    if (scores.empty()) {
+        return 0;
+    }
     float sum = 0;
 
-    for (int i = 0; i < scores.size; i++) {
+    for (int i = 0; i < scores.size(); i++) {
         sum += scores[i];
     }
-     average_score = sum / scores.size();
+
+    average_score = sum / scores.size();
     return average_score;
 }
 
-// FUNCTION ASSIGN GRADE
 
-int Student::getId() {
+int Student::getId() const {
     return id;
 }
 
-string Student::getName() {
+string Student::getName() const {
     return name;
 }
 
@@ -93,13 +96,24 @@ void Student::assignGrade() {
 }
 
 // FUNCTION UPDATE NAME
+
 void Student::updateName() {
-    cout << "Enter new name: "
+    cin.ignore(); 
+    cout << "Enter new name: ";
     getline(cin, name);
     cout << "Name updated successfully!" << endl;
 }
 
+// FUNCTION UPDATE AGE
+void Student::updateAge() {
+    cout << "Enter new age: ";
+    cin >> age;
+    cin.ignore(); 
+    cout << "Age updated successfully!" << endl;
+}
+
 // FUNCTION UPDATE COURSES AND SCORES
+
 void Student::updateCoursesAndScores() {
     courses.clear();
     scores.clear();
@@ -113,7 +127,7 @@ void Student::updateCoursesAndScores() {
 
         cout << "Enter new score for course " << i + 1 << ": ";
         cin >> score;
-        cin.ignore(); // To ignore the newline character left in the buffer
+        cin.ignore(1000, '\n');
 
         courses.push_back(course);
         scores.push_back(score);
@@ -126,6 +140,7 @@ void Student::updateCoursesAndScores() {
 }
 
 // FUNCTION UPDATE ALL INFORMATION
+
 void Student::updateAllInformation() {
     cout << "Enter new name: ";
     cin.ignore(); // To ignore the newline character left in the buffer
@@ -153,17 +168,21 @@ void Student::updateAllInformation() {
         scores.push_back(score);
 
     }
+    average_score = computeAverage();
+    assignGrade();
+    cout << "All information updated successfully!" << endl;
 }
 
-int Student::getAge() {
+
+int Student::getAge() const {
     return age;
 }
 
-vector<string> Student::getCourses() {
+vector<string> Student::getCourses() const {
     return courses;
 }
 
-vector<float> Student::getScores() {
+vector<float> Student::getScores() const {
     return scores;
 }
 
@@ -171,10 +190,21 @@ void Student::setId(int newId) {
     id = newId;
 }
 
+void Student::setName(string newName) {
+    name = newName;
+}
+
 void Student::setAge(int newAge) {
     age = newAge;
 }
+void Student::setCourses(vector<string> newCourses) {
+    courses = newCourses;
+}
 
-float Student::getAverage() {
+void Student::setScores(vector<float> newScores) {
+    scores = newScores;
+}
+
+float Student::getAverage() const{
     return average_score;
 }

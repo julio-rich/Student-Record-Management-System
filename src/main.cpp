@@ -22,7 +22,8 @@ int main(){
         cout << "4. Update Student" << endl;
         cout << "5. Delete Student" << endl;
         cout << "6. Sort Students" << endl;
-        cout << "7. Exit(save)" << endl;
+        cout << "7. Show Statistics" << endl;
+        cout << "8. Exit" << endl;
         cout << "Enter your choice: ";
         cin >> choice;
 
@@ -46,13 +47,16 @@ int main(){
                 FileHandler.saveToFile(system.getStudentList());
                 break;
             case 7:
+                system.showStatistics();
+                break;
+            case 8:
                 FileHandler.saveToFile(system.getStudentList());
                 cout << "Exiting the program. Goodbye!" << endl;
                 break;
             default:
                 cout << "Invalid choice. Please try again." << endl;
         }
-    } while (choice != 7);
+    } while (choice != 8);
 
     FileHandler::saveToFile(system.getStudentList());
     return 0;

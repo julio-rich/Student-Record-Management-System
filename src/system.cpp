@@ -87,8 +87,9 @@ void System::updateStudent(){
              Student &student = studentList[i];
 
             cout << "1. Update Name" << endl;
-            cout << "2. Update Courses and Scores" << endl;
-            cout << "3. Update both " << endl;
+            cout << "2. Update Age" << endl;
+            cout << "3. Update Courses and Scores" << endl;
+            cout << "4. Update all information" << endl;
             cout << "Enter your choice: ";
             int choice;
             cin >> choice;
@@ -100,8 +101,11 @@ void System::updateStudent(){
                 cout << "Name updated successfully!" << endl;
             } else if (choice == 2){
                 student.updateCoursesAndScores();
-                cout << "Courses and scores updated successfully!" << endl;
+
             } else if (choice == 3){
+                student.updateAge();
+                cout << "Age updated successfully!" << endl;
+            } else if (choice == 4){
                 student.updateAllInformation();
                 cout << "All information updated successfully!" << endl;
             }
@@ -153,4 +157,38 @@ void System::sortStudents(){
         return;
     }
     
+}
+
+void System::showStatistics()const {
+    if (studentList.empty()){
+        cout << "No students to calculate statistics." << endl;
+        return;
+    }
+    const student& highest = &studentList[0];
+    const student& lowest = &studentList[0];
+    float totalAverage = 0;
+
+    for(const auto& student : studentList){
+        if (student.getAverage() > highest->getAverage()){
+            highest = &student;
+        }
+        if (student.getAverage() < lowest->getAverage()){
+            lowest = &student;
+        }
+        totalAverage += student.getAverage();   
+
+    }
+
+    float classAverage = totalAverage / studentList.size(); 
+
+    cout << "\n-----STATISTICS DASHBOARD-----\n" << endl;
+    
+    cout << "\nTop Student: \n";
+    highest->displayStudent();
+
+    cout << "\nLowest Student:\n";
+    lowest->displayStudent();
+
+    cout << "\nClass Average: " << classAverage <<endl;
+
 }

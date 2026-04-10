@@ -2,6 +2,7 @@
 #define STUDENT_H
 #include <string>
 #include <vector>
+using namespace std;
 
 class Student {
     private:
@@ -14,30 +15,34 @@ class Student {
     char grade;
 
     public:
+    // core functions
     void inputStudent();
-    void displayStudent();
+    void displayStudent() const;
     float computeAverage();
     void assignGrade();
 
-    int getId();
-    string getName();
+    // getters and setters
+    int getId() const;
+    string getName() const;
+    float getAverage() const;
+    int getAge() const;
+    vector<string> getCourses () const;
+    vector<float> getScores() const;
 
+    void setId(int newId);
     void setName(string newName);
     void setAge(int newAge);
     void setCourses(vector<string> newCourses);
     void setScores(vector<float> newScores);
 
+    // update functions
     void updateName();
     void updateCoursesAndScores();
     void updateAllInformation();
 
-    int getAge();
-    vector<string> getCourses();
-    vector<float> getScores();
+    
 
-    void setId(int newId);
-    void setAge(int newAge);
 
-    float getAverage();
+    
 };
 #endif // STUDENT_H

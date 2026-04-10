@@ -17,6 +17,7 @@ class System {
     void updateStudent();
     void deleteStudent();
     void sortStudents();
+    void showStatistics() const;
 
     vector<Student>& getStudentList();
 };
