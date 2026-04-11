@@ -59,7 +59,8 @@ void System::searchStudent()const {
                 student.displayStudent();
                 return;
             }
-        }else if(choice == 2){
+        }
+    }else if(choice == 2){
         cin.ignore();
         string name;       
         cin >> name;
@@ -72,7 +73,7 @@ void System::searchStudent()const {
     }
     cout <<"Student not found \n";
 }
-}
+
 
 // FUNCTION UPDATE STUDENTS
 void System::updateStudent(){
@@ -165,8 +166,8 @@ void System::showStatistics()const {
         cout << "No students to calculate statistics." << endl;
         return;
     }
-    const Student& highest = &studentList[0];
-    const Student& lowest = &studentList[0];
+    const Student* highest = &studentList[0];
+    const Student* lowest = &studentList[0];
     float totalAverage = 0;
 
     for(const auto& student : studentList){

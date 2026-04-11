@@ -58,7 +58,7 @@ int main(){
         }
     } while (choice != 8);
 
-    FileHandler::saveToFile(system.getStudentList());
+    FileHandler::saveToFile(system.getStudents());
     return 0;
 }
 
