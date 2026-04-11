@@ -142,11 +142,11 @@ void Student::updateCoursesAndScores() {
 // FUNCTION UPDATE ALL INFORMATION
 
 void Student::updateAllInformation() {
-    cout << "Enter new name: ";
+    cout << "Enter the updated name: ";
     cin.ignore(); // To ignore the newline character left in the buffer
     getline(cin, name);
 
-    cout << "Enter new age: ";
+    cout << "Enter the updated age: ";
     cin >> age;
     cin.ignore(); // To ignore the newline character left in the buffer
 
@@ -157,10 +157,10 @@ void Student::updateAllInformation() {
         string course;
         float score;
 
-        cout << "Enter new course " << i + 1 << ": ";
+        cout << "Enter the updated course " << i + 1 << ": ";
         getline(cin, course);
 
-        cout << "Enter new score for course " << i + 1 << ": ";
+        cout << "Enter the updated score for course " << i + 1 << ": ";
         cin >> score;
         cin.ignore(); // To ignore the newline character left in the buffer
 

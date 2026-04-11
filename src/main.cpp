@@ -44,13 +44,13 @@ int main(){
                 system.deleteStudent();
                 break;
             case 6:
-                FileHandler.saveToFile(system.getStudentList());
+                FileHandler::saveToFile(system.getStudentList());
                 break;
             case 7:
                 system.showStatistics();
                 break;
             case 8:
-                FileHandler.saveToFile(system.getStudentList());
+                FileHandler::saveToFile(system.getStudentList());
                 cout << "Exiting the program. Goodbye!" << endl;
                 break;
             default:
@@ -58,7 +58,7 @@ int main(){
         }
     } while (choice != 8);
 
-    FileHandler::saveToFile(system.getStudents());
+    FileHandler::saveToFile(system.getStudentList());
     return 0;
 }
 
