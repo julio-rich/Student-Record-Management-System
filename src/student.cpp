@@ -99,14 +99,14 @@ void Student::assignGrade() {
 
 void Student::updateName() {
     cin.ignore(); 
-    cout << "Enter new name: ";
+    cout << "Enter the updated name: ";
     getline(cin, name);
     cout << "Name updated successfully!" << endl;
 }
 
 // FUNCTION UPDATE AGE
 void Student::updateAge() {
-    cout << "Enter new age: ";
+    cout << "Enter the updated age: ";
     cin >> age;
     cin.ignore(); 
     cout << "Age updated successfully!" << endl;
@@ -122,10 +122,10 @@ void Student::updateCoursesAndScores() {
         string course;
         float score;
 
-        cout << "Enter new course " << i + 1 << ": ";
+        cout << "Enter the updated course " << i + 1 << ": ";
         getline(cin, course);
 
-        cout << "Enter new score for course " << i + 1 << ": ";
+        cout << "Enter the updated score for course " << i + 1 << ": ";
         cin >> score;
         cin.ignore(1000, '\n');
 

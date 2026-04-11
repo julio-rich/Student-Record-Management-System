@@ -52,6 +52,7 @@ void System::searchStudent()const {
     cout << "Enter your choice : " << endl; 
     cin >> choice;
     if(choice == 1){
+        cout << "Enter the ID of the student to search: ";
         int id;
         cin >> id;
         for (const auto& student : studentList) {
@@ -62,6 +63,7 @@ void System::searchStudent()const {
         }
     }else if(choice == 2){
         cin.ignore();
+        cout << "Enter the name of the student to search: ";
         string name;       
         getline(cin, name);
         for (const auto& student : studentList) {
@@ -100,18 +102,14 @@ void System::updateStudent(){
             if (choice == 1){
                 cout << "Enter the updated name: ";
                 student.updateName();
-                cout << "Name updated successfully!" << endl;
             } else if (choice == 2){
                 cout << "Enter the updated age: ";
                 student.updateAge();
-                cout << "Age updated successfully!" << endl;
             } else if (choice == 3){
                 cout << "Enter the updated courses and scores: ";
                 student.updateCoursesAndScores();
-                cout << "Courses and scores updated successfully!" << endl;
             } else if (choice == 4){
                 student.updateAllInformation();
-                cout << "All information updated successfully!" << endl;
             }
             cout << "Student information updated successfully!" << endl;
             return;
